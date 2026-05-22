@@ -1,1033 +1,635 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Premium Secure Checkout</title>
+    <title>Premium Secure Checkout</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
-}
-
-body{
-background:#0f172a;
-min-height:100vh;
-overflow-x:hidden;
-position:relative;
-}
-
-body::before{
-content:'';
-position:fixed;
-top:-200px;
-left:-150px;
-width:450px;
-height:450px;
-background:#2563eb;
-opacity:.15;
-filter:blur(140px);
-z-index:-1;
-}
-
-body::after{
-content:'';
-position:fixed;
-bottom:-200px;
-right:-150px;
-width:450px;
-height:450px;
-background:#4f46e5;
-opacity:.12;
-filter:blur(140px);
-z-index:-1;
-}
-
-.header{
-height:85px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-bottom:1px solid rgba(255,255,255,.06);
-background:rgba(15,23,42,.85);
-backdrop-filter:blur(12px);
-position:sticky;
-top:0;
-z-index:999;
-}
-
-.logo{
-font-size:30px;
-font-weight:800;
-color:#fff;
-letter-spacing:1px;
-}
-
-.container{
-max-width:760px;
-margin:45px auto;
-padding:0 20px;
-}
-
-.banner{
-height:340px;
-border-radius:30px;
-overflow:hidden;
-position:relative;
-margin-bottom:35px;
-box-shadow:0 15px 40px rgba(0,0,0,.35);
-}
-
-.banner img{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block;
-}
-
-.overlay{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-padding:50px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-background:
-linear-gradient(to right,
-rgba(15,23,42,.92),
-rgba(15,23,42,.35));
-}
-
-.overlay small{
-display:inline-block;
-padding:10px 18px;
-background:rgba(255,255,255,.12);
-border-radius:50px;
-color:#fff;
-font-weight:700;
-margin-bottom:22px;
-}
-
-.overlay h1{
-font-size:54px;
-line-height:1.1;
-font-weight:800;
-color:#fff;
-margin-bottom:18px;
-}
-
-.overlay p{
-font-size:18px;
-line-height:1.7;
-color:#dbeafe;
-max-width:520px;
-}
-
-.card{
-background:#111827;
-border:1px solid rgba(255,255,255,.05);
-border-radius:28px;
-padding:40px;
-box-shadow:0 10px 35px rgba(0,0,0,.35);
-}
-
-.title{
-font-size:38px;
-font-weight:800;
-color:#fff;
-margin-bottom:35px;
-}
-
-.input-box{
-position:relative;
-margin-bottom:22px;
-width:100%;
-}
-
-.input-icon{
-position:absolute;
-left:18px;
-top:50%;
-transform:translateY(-50%);
-font-size:18px;
-color:#94a3b8;
-z-index:10;
-}
-
-.input{
-width:100%;
-height:62px;
-background:#1f2937;
-border:1px solid rgba(255,255,255,.06);
-border-radius:16px;
-padding:0 18px 0 54px;
-font-size:16px;
-color:#fff;
-outline:none;
-transition:.3s;
-}
-
-.input::placeholder{
-color:#94a3b8;
-}
-
-.input:focus{
-border-color:#3b82f6;
-box-shadow:0 0 0 4px rgba(59,130,246,.15);
-}
-
-select.input{
-appearance:none;
-cursor:pointer;
-}
-
-select.input option{
-background:#1f2937;
-color:#fff;
-}
-
-.error{
-border-color:#ef4444 !important;
-box-shadow:0 0 0 4px rgba(239,68,68,.15) !important;
-}
-
-.row{
-display:flex;
-gap:15px;
-width:100%;
-}
-
-.country-box{
-width:32%;
-}
-
-.mobile-box{
-width:68%;
-}
-
-.summary{
-background:#1e293b;
-border-radius:22px;
-padding:25px;
-margin-bottom:30px;
-}
-
-.summary-row{
-display:flex;
-justify-content:space-between;
-margin-bottom:18px;
-font-size:17px;
-color:#e5e7eb;
-}
-
-.total{
-padding-top:18px;
-border-top:1px dashed rgba(255,255,255,.12);
-font-size:24px;
-font-weight:700;
-color:#fff;
-}
-
-.payment-box{
-background:#1e293b;
-border-radius:22px;
-padding:28px;
-margin-top:25px;
-}
-
-.payment-head{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:25px;
-}
-
-.payment-head h3{
-font-size:24px;
-font-weight:700;
-color:#fff;
-}
-
-.card-icon{
-width:90px;
-height:55px;
-background:#fff;
-border-radius:12px;
-padding:6px;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-}
-
-.card-icon img{
-width:100%;
-height:100%;
-object-fit:contain;
-display:block;
-}
-
-.btn{
-width:100%;
-height:68px;
-border:none;
-border-radius:55px;
-background:linear-gradient(135deg,#2563eb,#3b82f6);
-font-size:21px;
-font-weight:700;
-color:#fff;
-cursor:pointer;
-transition:.3s;
-margin-top:15px;
-box-shadow:0 10px 30px rgba(37,99,235,.3);
-}
-
-.btn:hover{
-transform:translateY(-3px);
-}
-
-.success{
-display:none;
-text-align:center;
-padding:50px 20px;
-}
-
-.success-icon{
-width:100px;
-height:100px;
-border-radius:50%;
-background:linear-gradient(135deg,#22c55e,#16a34a);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:50px;
-color:#fff;
-margin:0 auto 25px;
-}
-
-.receipt{
-background:#1e293b;
-border-radius:22px;
-padding:25px;
-text-align:left;
-margin-top:20px;
-}
-
-.receipt-row{
-display:flex;
-justify-content:space-between;
-margin-bottom:16px;
-font-size:16px;
-color:#e5e7eb;
-}
-
-@media(max-width:768px){
-
-.banner{
-height:260px;
-}
-
-.overlay{
-padding:28px;
-}
-
-.overlay h1{
-font-size:34px;
-}
-
-.row{
-flex-direction:column;
-}
-
-.country-box,
-.mobile-box{
-width:100%;
-}
-
-.card{
-padding:24px;
-}
-
-}
-
-</style>
+    <link rel="stylesheet" href="assets/style.css">
 
 </head>
 
 <body>
 
-<div class="header">
-<div class="logo">PREMIUM PAY</div>
-</div>
+    <div class="header">
+        <div class="logo">PREMIUM PAY</div>
+    </div>
 
-<div class="container">
+    <div class="container">
 
-<div class="banner">
+        <div class="banner">
 
-<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop">
 
-<div class="overlay">
+            <div class="overlay">
 
-<small>SECURE PAYMENT</small>
+                <small>SECURE PAYMENT</small>
 
-<h1>Modern Secure Checkout</h1>
+                <h1>Modern Secure Checkout</h1>
 
-<p>
-Professional fintech payment experience with premium secure checkout UI.
-</p>
+                <p>
+                    Professional fintech payment experience with premium secure checkout UI.
+                </p>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-<div class="card" id="step1">
+        <div class="card" id="step1">
 
-<h2 class="title">Start Payment</h2>
+            <h2 class="title">Start Payment</h2>
 
-<div class="input-box">
+            <div class="input-box">
 
-<span class="input-icon">💰</span>
+                <span class="input-icon">💰</span>
 
-<input
-type="tel"
-class="input"
-id="amount"
-placeholder="Enter Amount"
-maxlength="10"
-onkeypress="return onlyNumber(event)"
->
+                <input type="tel" class="input" id="amount" placeholder="Enter Amount" maxlength="10"
+                    onkeypress="return onlyNumber(event)">
 
-</div>
+            </div>
 
-<div class="input-box">
+            <div class="input-box">
 
-<span class="input-icon">📘</span>
+                <span class="input-icon">📘</span>
 
-<input
-type="text"
-class="input"
-id="purpose"
-placeholder="Payment Purpose"
-onkeypress="return onlyTextNumber(event)"
->
+                <input type="text" class="input" id="purpose" placeholder="Payment Purpose"
+                    onkeypress="return onlyTextNumber(event)">
 
-</div>
+            </div>
 
-<button class="btn" onclick="goCheckout()">
-Proceed Checkout
-</button>
+            <button class="btn" onclick="goCheckout()">
+                Proceed Checkout
+            </button>
 
-</div>
+        </div>
 
-<div class="card" id="step2" style="display:none;margin-top:30px;">
+        <div class="card" id="step2" style="display:none;margin-top:30px;">
 
-<h2 class="title">Payment Details</h2>
+            <h2 class="title">Payment Details</h2>
 
-<div class="summary">
+            <div class="summary">
 
-<div class="summary-row">
-<span>Subtotal</span>
-<span id="subtotal">$0</span>
-</div>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">$0</span>
+                </div>
 
-<div class="summary-row">
-<span>Tax</span>
-<span id="tax">$0</span>
-</div>
+                <div class="summary-row">
+                    <span>Tax</span>
+                    <span id="tax">$0</span>
+                </div>
 
-<div class="summary-row total">
-<span>Total</span>
-<span id="total">$0</span>
-</div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="total">$0</span>
+                </div>
 
-</div>
+            </div>
 
-<div class="input-box">
+            <div class="input-box">
 
-<span class="input-icon">👤</span>
+                <span class="input-icon">👤</span>
 
-<input
-type="text"
-class="input"
-id="fullname"
-placeholder="Full Name"
-onkeypress="return onlyText(event)"
->
+                <input type="text" class="input" id="fullname" placeholder="Full Name"
+                    onkeypress="return onlyText(event)">
 
-</div>
+            </div>
 
-<div class="row">
+            <div class="row">
 
-<div class="input-box country-box">
+                <div class="input-box country-box">
 
-<span class="input-icon">🌍</span>
+                    <span class="input-icon">🌍</span>
 
-<select class="input" id="countryCode">
+                    <select class="input" id="countryCode">
 
-<option value="+91" selected>🇮🇳 India (+91)</option>
+                        <option value="+91" selected>🇮🇳 India (+91)</option>
 
-<option value="+1">🇺🇸 USA (+1)</option>
-<option value="+44">🇬🇧 UK (+44)</option>
-<option value="+971">🇦🇪 UAE (+971)</option>
-<option value="+61">🇦🇺 Australia (+61)</option>
-<option value="+49">🇩🇪 Germany (+49)</option>
-<option value="+33">🇫🇷 France (+33)</option>
-<option value="+81">🇯🇵 Japan (+81)</option>
-<option value="+86">🇨🇳 China (+86)</option>
-<option value="+92">🇵🇰 Pakistan (+92)</option>
-<option value="+880">🇧🇩 Bangladesh (+880)</option>
-<option value="+94">🇱🇰 Sri Lanka (+94)</option>
-<option value="+977">🇳🇵 Nepal (+977)</option>
+                        <option value="+1">🇺🇸 USA (+1)</option>
+                        <option value="+44">🇬🇧 UK (+44)</option>
+                        <option value="+971">🇦🇪 UAE (+971)</option>
+                        <option value="+61">🇦🇺 Australia (+61)</option>
+                        <option value="+49">🇩🇪 Germany (+49)</option>
+                        <option value="+33">🇫🇷 France (+33)</option>
+                        <option value="+81">🇯🇵 Japan (+81)</option>
+                        <option value="+86">🇨🇳 China (+86)</option>
+                        <option value="+92">🇵🇰 Pakistan (+92)</option>
+                        <option value="+880">🇧🇩 Bangladesh (+880)</option>
+                        <option value="+94">🇱🇰 Sri Lanka (+94)</option>
+                        <option value="+977">🇳🇵 Nepal (+977)</option>
 
-</select>
+                    </select>
 
-</div>
+                </div>
 
-<div class="input-box mobile-box">
+                <div class="input-box mobile-box">
 
-<span class="input-icon">📞</span>
+                    <span class="input-icon">📞</span>
 
-<input
-type="tel"
-class="input"
-id="phone"
-placeholder="Phone Number"
-maxlength="15"
-onkeypress="return onlyNumber(event)"
->
+                    <input type="tel" class="input" id="phone" placeholder="Phone Number" maxlength="15"
+                        onkeypress="return onlyNumber(event)">
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-<div class="input-box">
+            <div class="input-box">
 
-<span class="input-icon">✉️</span>
+                <span class="input-icon">✉️</span>
 
-<input
-type="email"
-class="input"
-id="email"
-placeholder="Email Address"
->
+                <input type="email" class="input" id="email" placeholder="Email Address">
 
-</div>
+            </div>
 
-<div class="payment-box">
+            <div class="payment-box">
 
-<div class="payment-head">
+                <div class="payment-head">
 
-<h3>Card Information</h3>
+                    <h3>Card Information</h3>
 
-<div class="card-icon">
+                    <div class="card-icon">
 
-<img
-src="https://cdn-icons-png.flaticon.com/512/349/349221.png"
-alt="Visa Card"
->
+                        <img src="https://cdn-icons-png.flaticon.com/512/349/349221.png" alt="Visa Card">
 
-</div>
+                    </div>
 
-</div>
+                </div>
 
-<div class="input-box">
+                <div class="input-box">
 
-<span class="input-icon">💳</span>
+                    <span class="input-icon">💳</span>
 
-<input
-type="tel"
-class="input"
-id="cardNumber"
-placeholder="1234 5678 9012 3456"
-maxlength="19"
-onkeypress="return onlyNumber(event)"
->
+                    <input type="tel" class="input" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"
+                        onkeypress="return onlyNumber(event)">
 
-</div>
+                </div>
 
-<div class="row">
+                <div class="row">
 
-<div class="input-box">
+                    <div class="input-box">
 
-<span class="input-icon">📅</span>
+                        <span class="input-icon">📅</span>
 
-<input
-type="tel"
-class="input"
-id="expiry"
-placeholder="MM/YY"
-maxlength="5"
-onkeypress="return onlyNumber(event)"
->
+                        <input type="tel" class="input" id="expiry" placeholder="MM/YY" maxlength="5"
+                            onkeypress="return onlyNumber(event)">
 
-</div>
+                    </div>
 
-<div class="input-box">
+                    <div class="input-box">
 
-<span class="input-icon">🔒</span>
+                        <span class="input-icon">🔒</span>
 
-<input
-type="password"
-class="input"
-id="cvv"
-placeholder="CVV"
-maxlength="3"
-onkeypress="return onlyNumber(event)"
->
+                        <input type="password" class="input" id="cvv" placeholder="CVV" maxlength="3"
+                            onkeypress="return onlyNumber(event)">
 
-</div>
+                    </div>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-<button class="btn" onclick="payNow()" id="paybtn">
-Pay Securely
-</button>
+            <button class="btn" onclick="payNow()" id="paybtn">
+                Pay Securely
+            </button>
 
-</div>
+        </div>
 
-<div class="card success" id="success">
+        <div class="card success" id="success">
 
-<div class="success-icon">✓</div>
+            <div class="success-icon">✓</div>
 
-<h2 style="color:#fff;margin-bottom:15px;">
-Payment Successful
-</h2>
+            <h2 style="color:#fff;margin-bottom:15px;">
+                Payment Successful
+            </h2>
 
-<div class="receipt">
+            <div class="receipt">
 
-<div class="receipt-row">
-<span>Transaction ID</span>
-<span id="txn"></span>
-</div>
+                <div class="receipt-row">
+                    <span>Transaction ID</span>
+                    <span id="txn"></span>
+                </div>
 
-<div class="receipt-row">
-<span>Amount</span>
-<span id="receiptAmount"></span>
-</div>
+                <div class="receipt-row">
+                    <span>Amount</span>
+                    <span id="receiptAmount"></span>
+                </div>
 
-<div class="receipt-row">
-<span>Name</span>
-<span id="receiptName"></span>
-</div>
+                <div class="receipt-row">
+                    <span>Name</span>
+                    <span id="receiptName"></span>
+                </div>
 
-<div class="receipt-row">
-<span>Country Code</span>
-<span id="receiptCountry"></span>
-</div>
+                <div class="receipt-row">
+                    <span>Country Code</span>
+                    <span id="receiptCountry"></span>
+                </div>
 
-<div class="receipt-row">
-<span>Phone</span>
-<span id="receiptPhone"></span>
-</div>
+                <div class="receipt-row">
+                    <span>Phone</span>
+                    <span id="receiptPhone"></span>
+                </div>
 
-<div class="receipt-row">
-<span>Email</span>
-<span id="receiptEmail"></span>
-</div>
+                <div class="receipt-row">
+                    <span>Email</span>
+                    <span id="receiptEmail"></span>
+                </div>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-<script>
+    <script>
 
-function onlyNumber(evt){
+        function onlyNumber(evt) {
 
-let charCode =
-(evt.which) ? evt.which : evt.keyCode;
+            let charCode =
+                (evt.which) ? evt.which : evt.keyCode;
 
-if(charCode > 31 &&
-(charCode < 48 || charCode > 57)){
+            if (charCode > 31 &&
+                (charCode < 48 || charCode > 57)) {
 
-return false;
+                return false;
 
-}
+            }
 
-return true;
+            return true;
 
-}
+        }
 
-function onlyText(evt){
+        function onlyText(evt) {
 
-let charCode =
-(evt.which) ? evt.which : evt.keyCode;
+            let charCode =
+                (evt.which) ? evt.which : evt.keyCode;
 
-if(
-!(charCode >= 65 && charCode <= 90) &&
-!(charCode >= 97 && charCode <= 122) &&
-charCode != 32
-){
+            if (
+                !(charCode >= 65 && charCode <= 90) &&
+                !(charCode >= 97 && charCode <= 122) &&
+                charCode != 32
+            ) {
 
-return false;
+                return false;
 
-}
+            }
 
-return true;
+            return true;
 
-}
+        }
 
-function onlyTextNumber(evt){
+        function onlyTextNumber(evt) {
 
-let charCode =
-(evt.which) ? evt.which : evt.keyCode;
+            let charCode =
+                (evt.which) ? evt.which : evt.keyCode;
 
-if(
-!(charCode >= 65 && charCode <= 90) &&
-!(charCode >= 97 && charCode <= 122) &&
-!(charCode >= 48 && charCode <= 57) &&
-charCode != 32
-){
+            if (
+                !(charCode >= 65 && charCode <= 90) &&
+                !(charCode >= 97 && charCode <= 122) &&
+                !(charCode >= 48 && charCode <= 57) &&
+                charCode != 32
+            ) {
 
-return false;
+                return false;
 
-}
+            }
 
-return true;
+            return true;
 
-}
+        }
 
-document.getElementById("cardNumber")
-.addEventListener("input",function(e){
+        document.getElementById("cardNumber")
+            .addEventListener("input", function (e) {
 
-let value =
-e.target.value.replace(/\D/g,'');
+                let value =
+                    e.target.value.replace(/\D/g, '');
 
-value =
-value.substring(0,16);
+                value =
+                    value.substring(0, 16);
 
-value =
-value.replace(/(.{4})/g,'$1 ').trim();
+                value =
+                    value.replace(/(.{4})/g, '$1 ').trim();
 
-e.target.value =
-value;
+                e.target.value =
+                    value;
 
-});
+            });
 
-document.getElementById("expiry")
-.addEventListener("input",function(e){
+        document.getElementById("expiry")
+            .addEventListener("input", function (e) {
 
-let value =
-e.target.value.replace(/\D/g,'');
+                let value =
+                    e.target.value.replace(/\D/g, '');
 
-if(value.length > 4){
+                if (value.length > 4) {
 
-value =
-value.substring(0,4);
+                    value =
+                        value.substring(0, 4);
 
-}
+                }
 
-if(value.length >= 3){
+                if (value.length >= 3) {
 
-value =
-value.substring(0,2)
-+"/"+
-value.substring(2);
+                    value =
+                        value.substring(0, 2)
+                        + "/" +
+                        value.substring(2);
 
-}
+                }
 
-e.target.value =
-value;
+                e.target.value =
+                    value;
 
-});
+            });
 
-function validateEmail(email){
+        function validateEmail(email) {
 
-return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-.test(email);
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                .test(email);
 
-}
+        }
 
-function validCard(cardNumber){
+        function validCard(cardNumber) {
 
-cardNumber =
-cardNumber.replace(/\s/g,'');
+            cardNumber =
+                cardNumber.replace(/\s/g, '');
 
-let sum = 0;
-let shouldDouble = false;
+            let sum = 0;
+            let shouldDouble = false;
 
-for(let i = cardNumber.length - 1; i >= 0; i--){
+            for (let i = cardNumber.length - 1; i >= 0; i--) {
 
-let digit =
-parseInt(cardNumber.charAt(i));
+                let digit =
+                    parseInt(cardNumber.charAt(i));
 
-if(shouldDouble){
+                if (shouldDouble) {
 
-digit *= 2;
+                    digit *= 2;
 
-if(digit > 9){
+                    if (digit > 9) {
 
-digit -= 9;
+                        digit -= 9;
 
-}
+                    }
 
-}
+                }
 
-sum += digit;
+                sum += digit;
 
-shouldDouble =
-!shouldDouble;
+                shouldDouble =
+                    !shouldDouble;
 
-}
+            }
 
-return (sum % 10) === 0;
+            return (sum % 10) === 0;
 
-}
+        }
 
-function validExpiry(expiry){
+        function validExpiry(expiry) {
 
-if(!/^(0[1-9]|1[0-2])\/([0-9]{2})$/
-.test(expiry))
-return false;
+            if (!/^(0[1-9]|1[0-2])\/([0-9]{2})$/
+                .test(expiry))
+                return false;
 
-let parts =
-expiry.split('/');
+            let parts =
+                expiry.split('/');
 
-let month =
-parseInt(parts[0],10);
+            let month =
+                parseInt(parts[0], 10);
 
-let year =
-parseInt("20"+parts[1],10);
+            let year =
+                parseInt("20" + parts[1], 10);
 
-let today =
-new Date();
+            let today =
+                new Date();
 
-let expiryDate =
-new Date(year, month);
+            let expiryDate =
+                new Date(year, month);
 
-return expiryDate > today;
+            return expiryDate > today;
 
-}
+        }
 
-function showError(input,message){
+        function showError(input, message) {
 
-input.classList.add("error");
+            input.classList.add("error");
 
-input.focus();
+            input.focus();
 
-alert(message);
+            alert(message);
 
-}
+        }
 
-document.querySelectorAll(".input")
-.forEach(input=>{
+        document.querySelectorAll(".input")
+            .forEach(input => {
 
-input.addEventListener("input",()=>{
+                input.addEventListener("input", () => {
 
-input.classList.remove("error");
+                    input.classList.remove("error");
 
-});
+                });
 
-});
+            });
 
-function goCheckout(){
+        function goCheckout() {
 
-let amount =
-document.getElementById("amount");
+            let amount =
+                document.getElementById("amount");
 
-let purpose =
-document.getElementById("purpose");
+            let purpose =
+                document.getElementById("purpose");
 
-if(amount.value.trim()==""){
+            if (amount.value.trim() == "") {
 
-showError(amount,"Enter amount");
-return;
+                showError(amount, "Enter amount");
+                return;
 
-}
+            }
 
-if(parseFloat(amount.value)<1){
+            if (parseFloat(amount.value) < 1) {
 
-showError(amount,"Minimum amount is $1");
-return;
+                showError(amount, "Minimum amount is $1");
+                return;
 
-}
+            }
 
-if(purpose.value.trim()==""){
+            if (purpose.value.trim() == "") {
 
-showError(purpose,"Enter payment purpose");
-return;
+                showError(purpose, "Enter payment purpose");
+                return;
 
-}
+            }
 
-let tax =
-(amount.value*0.10).toFixed(2);
+            let tax =
+                (amount.value * 0.10).toFixed(2);
 
-let total =
-(parseFloat(amount.value)+parseFloat(tax))
-.toFixed(2);
+            let total =
+                (parseFloat(amount.value) + parseFloat(tax))
+                    .toFixed(2);
 
-document.getElementById("subtotal")
-.innerHTML="$"+amount.value;
+            document.getElementById("subtotal")
+                .innerHTML = "$" + amount.value;
 
-document.getElementById("tax")
-.innerHTML="$"+tax;
+            document.getElementById("tax")
+                .innerHTML = "$" + tax;
 
-document.getElementById("total")
-.innerHTML="$"+total;
+            document.getElementById("total")
+                .innerHTML = "$" + total;
 
-document.getElementById("receiptAmount")
-.innerHTML="$"+total;
+            document.getElementById("receiptAmount")
+                .innerHTML = "$" + total;
 
-document.getElementById("step1")
-.style.display="none";
+            document.getElementById("step1")
+                .style.display = "none";
 
-document.getElementById("step2")
-.style.display="block";
+            document.getElementById("step2")
+                .style.display = "block";
 
-}
+        }
 
-function payNow(){
+        function payNow() {
 
-let fullname =
-document.getElementById("fullname");
+            let fullname =
+                document.getElementById("fullname");
 
-let country =
-document.getElementById("countryCode");
+            let country =
+                document.getElementById("countryCode");
 
-let phone =
-document.getElementById("phone");
+            let phone =
+                document.getElementById("phone");
 
-let email =
-document.getElementById("email");
+            let email =
+                document.getElementById("email");
 
-let card =
-document.getElementById("cardNumber");
+            let card =
+                document.getElementById("cardNumber");
 
-let expiry =
-document.getElementById("expiry");
+            let expiry =
+                document.getElementById("expiry");
 
-let cvv =
-document.getElementById("cvv");
+            let cvv =
+                document.getElementById("cvv");
 
-if(fullname.value.trim()==""){
+            if (fullname.value.trim() == "") {
 
-showError(fullname,"Enter full name");
-return;
+                showError(fullname, "Enter full name");
+                return;
 
-}
+            }
 
-if(fullname.value.length<3){
+            if (fullname.value.length < 3) {
 
-showError(fullname,"Invalid full name");
-return;
+                showError(fullname, "Invalid full name");
+                return;
 
-}
+            }
 
-if(phone.value.trim()==""){
+            if (phone.value.trim() == "") {
 
-showError(phone,"Enter phone number");
-return;
+                showError(phone, "Enter phone number");
+                return;
 
-}
+            }
 
-if(phone.value.length<8){
+            if (phone.value.length < 8) {
 
-showError(phone,"Invalid phone number");
-return;
+                showError(phone, "Invalid phone number");
+                return;
 
-}
+            }
 
-if(email.value.trim()==""){
+            if (email.value.trim() == "") {
 
-showError(email,"Enter email");
-return;
+                showError(email, "Enter email");
+                return;
 
-}
+            }
 
-if(!validateEmail(email.value)){
+            if (!validateEmail(email.value)) {
 
-showError(email,"Invalid email");
-return;
+                showError(email, "Invalid email");
+                return;
 
-}
+            }
 
-if(card.value.replace(/\s/g,'').length!=16){
+            if (card.value.replace(/\s/g, '').length != 16) {
 
-showError(card,"Card must be 16 digits");
-return;
+                showError(card, "Card must be 16 digits");
+                return;
 
-}
+            }
 
-if(!validCard(card.value)){
+            if (!validCard(card.value)) {
 
-showError(card,"Invalid card number");
-return;
+                showError(card, "Invalid card number");
+                return;
 
-}
+            }
 
-if(!validExpiry(expiry.value)){
+            if (!validExpiry(expiry.value)) {
 
-showError(expiry,"Card expired or invalid");
-return;
+                showError(expiry, "Card expired or invalid");
+                return;
 
-}
+            }
 
-if(cvv.value.length!=3){
+            if (cvv.value.length != 3) {
 
-showError(cvv,"Invalid CVV");
-return;
+                showError(cvv, "Invalid CVV");
+                return;
 
-}
+            }
 
-let button =
-document.getElementById("paybtn");
+            let button =
+                document.getElementById("paybtn");
 
-button.innerHTML =
-"Processing Payment...";
+            button.innerHTML =
+                "Processing Payment...";
 
-button.disabled = true;
+            button.disabled = true;
 
-setTimeout(()=>{
+            setTimeout(() => {
 
-let txn =
-"TXN"+
-Math.floor(Math.random()*99999999);
+                let txn =
+                    "TXN" +
+                    Math.floor(Math.random() * 99999999);
 
-document.getElementById("txn")
-.innerHTML = txn;
+                document.getElementById("txn")
+                    .innerHTML = txn;
 
-document.getElementById("receiptName")
-.innerHTML = fullname.value;
+                document.getElementById("receiptName")
+                    .innerHTML = fullname.value;
 
-document.getElementById("receiptCountry")
-.innerHTML = country.value;
+                document.getElementById("receiptCountry")
+                    .innerHTML = country.value;
 
-document.getElementById("receiptPhone")
-.innerHTML = phone.value;
+                document.getElementById("receiptPhone")
+                    .innerHTML = phone.value;
 
-document.getElementById("receiptEmail")
-.innerHTML = email.value;
+                document.getElementById("receiptEmail")
+                    .innerHTML = email.value;
 
-document.getElementById("step2")
-.style.display = "none";
+                document.getElementById("step2")
+                    .style.display = "none";
 
-document.getElementById("success")
-.style.display = "block";
+                document.getElementById("success")
+                    .style.display = "block";
 
-window.scrollTo({
-top:0,
-behavior:'smooth'
-});
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
 
-},2200);
+            }, 2200);
 
-}
+        }
 
-</script>
+    </script>
 
 </body>
-</html> 
+
+</html>

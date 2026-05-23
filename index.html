@@ -4,20 +4,25 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Premium Secure Checkout</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="assets/style.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
 
     <div class="header">
-        <div class="logo">PREMIUM PAY</div>
+
+        <div class="logo">
+            PREMIUM PAY
+        </div>
+
     </div>
 
     <div class="container">
@@ -33,22 +38,31 @@
                 <h1>Modern Secure Checkout</h1>
 
                 <p>
-                    Professional fintech payment experience with premium secure checkout UI.
+                    Professional fintech payment experience
+                    with premium secure checkout UI.
                 </p>
 
             </div>
 
         </div>
 
+        <!-- STEP 1 -->
+
         <div class="card" id="step1">
 
-            <h2 class="title">Start Payment</h2>
+            <h2 class="title">
+                Start Payment
+            </h2>
 
             <div class="input-box">
 
                 <span class="input-icon">💰</span>
 
-                <input type="tel" class="input" id="amount" placeholder="Enter Amount" maxlength="10"
+                <input type="tel"
+                    class="input"
+                    id="amount"
+                    placeholder="Enter Amount"
+                    maxlength="10"
                     onkeypress="return onlyNumber(event)">
 
             </div>
@@ -57,20 +71,32 @@
 
                 <span class="input-icon">📘</span>
 
-                <input type="text" class="input" id="purpose" placeholder="Payment Purpose"
+                <input type="text"
+                    class="input"
+                    id="purpose"
+                    placeholder="Payment Purpose"
                     onkeypress="return onlyTextNumber(event)">
 
             </div>
 
-            <button class="btn" onclick="goCheckout()">
+            <button class="btn"
+                onclick="goCheckout()">
+
                 Proceed Checkout
+
             </button>
 
         </div>
 
-        <div class="card" id="step2" style="display:none;margin-top:30px;">
+        <!-- STEP 2 -->
 
-            <h2 class="title">Payment Details</h2>
+        <div class="card"
+            id="step2"
+            style="display:none;">
+
+            <h2 class="title">
+                Payment Details
+            </h2>
 
             <div class="summary">
 
@@ -91,25 +117,32 @@
 
             </div>
 
+            <!-- FULL NAME -->
+
             <div class="input-box">
 
                 <span class="input-icon">👤</span>
 
-                <input type="text" class="input" id="fullname" placeholder="Full Name"
+                <input type="text"
+                    class="input"
+                    id="fullname"
+                    placeholder="Full Name"
                     onkeypress="return onlyText(event)">
 
             </div>
 
+            <!-- COUNTRY + PHONE -->
+
             <div class="row">
 
-                <div class="input-box country-box">
+                <div class="input-box">
 
                     <span class="input-icon">🌍</span>
 
-                    <select class="input" id="countryCode">
+                    <select class="input"
+                        id="countryCode">
 
-                        <option value="+91" selected>🇮🇳 India (+91)</option>
-
+                        <option value="+91">🇮🇳 India (+91)</option>
                         <option value="+1">🇺🇸 USA (+1)</option>
                         <option value="+44">🇬🇧 UK (+44)</option>
                         <option value="+971">🇦🇪 UAE (+971)</option>
@@ -127,83 +160,311 @@
 
                 </div>
 
-                <div class="input-box mobile-box">
+                <div class="input-box">
 
                     <span class="input-icon">📞</span>
 
-                    <input type="tel" class="input" id="phone" placeholder="Phone Number" maxlength="15"
+                    <input type="tel"
+                        class="input"
+                        id="phone"
+                        placeholder="Phone Number"
+                        maxlength="15"
                         onkeypress="return onlyNumber(event)">
 
                 </div>
 
             </div>
+
+            <!-- EMAIL -->
 
             <div class="input-box">
 
                 <span class="input-icon">✉️</span>
 
-                <input type="email" class="input" id="email" placeholder="Email Address">
+                <input type="email"
+                    class="input"
+                    id="email"
+                    placeholder="Email Address">
 
             </div>
 
-            <div class="payment-box">
+            <!-- CARD -->
 
-                <div class="payment-head">
+            <!-- CARD INFORMATION -->
 
-                    <h3>Card Information</h3>
+<div class="payment-box">
 
-                    <div class="card-icon">
+    <div class="payment-head">
 
-                        <img src="https://cdn-icons-png.flaticon.com/512/349/349221.png" alt="Visa Card">
+        <h3>Card Information</h3>
 
-                    </div>
+        <div class="card-icon">
 
-                </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/349/349221.png">
 
-                <div class="input-box">
+        </div>
 
-                    <span class="input-icon">💳</span>
+    </div>
 
-                    <input type="tel" class="input" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"
-                        onkeypress="return onlyNumber(event)">
+    <!-- CARD NUMBER -->
 
-                </div>
+    <div class="input-box">
 
-                <div class="row">
+        <span class="input-icon">💳</span>
 
-                    <div class="input-box">
+        <input type="text"
+            class="input"
+            id="cardNumber"
+            placeholder="1234 5678 9012 3456"
+            maxlength="19"
+            autocomplete="off">
 
-                        <span class="input-icon">📅</span>
+    </div>
 
-                        <input type="tel" class="input" id="expiry" placeholder="MM/YY" maxlength="5"
-                            onkeypress="return onlyNumber(event)">
+    <div class="row">
 
-                    </div>
+        <!-- EXPIRY -->
 
-                    <div class="input-box">
+        <div class="input-box">
 
-                        <span class="input-icon">🔒</span>
+            <span class="input-icon">📅</span>
 
-                        <input type="password" class="input" id="cvv" placeholder="CVV" maxlength="3"
-                            onkeypress="return onlyNumber(event)">
+            <input type="text"
+                class="input"
+                id="expiry"
+                placeholder="MM/YY"
+                maxlength="5">
 
-                    </div>
+        </div>
 
-                </div>
+        <!-- CVV -->
 
-            </div>
+        <div class="input-box">
 
-            <button class="btn" onclick="payNow()" id="paybtn">
+            <span class="input-icon">🔒</span>
+
+            <input type="password"
+                class="input"
+                id="cvv"
+                placeholder="123"
+                maxlength="3">
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    /* ======================================
+       CARD NUMBER FORMAT
+    ====================================== */
+
+    const cardInput =
+        document.getElementById("cardNumber");
+
+    cardInput.addEventListener("input", function (e) {
+
+        // Remove all non numbers
+        let value =
+            e.target.value.replace(/\D/g, '');
+
+        // Max 16 digits
+        value =
+            value.substring(0, 16);
+
+        // Add spaces after every 4 digits
+        value =
+            value.replace(/(\d{4})(?=\d)/g, '$1 ');
+
+        // Final value
+        e.target.value =
+            value;
+
+    });
+
+    /* ======================================
+       EXPIRY FORMAT
+    ====================================== */
+
+    const expiryInput =
+        document.getElementById("expiry");
+
+    expiryInput.addEventListener("input", function (e) {
+
+        let value =
+            e.target.value.replace(/\D/g, '');
+
+        // Max 4 digits
+        value =
+            value.substring(0, 4);
+
+        // Add slash
+        if (value.length >= 3) {
+
+            value =
+                value.substring(0, 2)
+                + "/"
+                + value.substring(2);
+
+        }
+
+        e.target.value =
+            value;
+
+    });
+
+    /* ======================================
+       CVV ONLY 3 DIGITS
+    ====================================== */
+
+    const cvvInput =
+        document.getElementById("cvv");
+
+    cvvInput.addEventListener("input", function (e) {
+
+        let value =
+            e.target.value.replace(/\D/g, '');
+
+        // Only 3 digits
+        value =
+            value.substring(0, 3);
+
+        e.target.value =
+            value;
+
+    });
+
+    /* ======================================
+       CARD VALIDATION
+    ====================================== */
+
+    function validateCardDetails() {
+
+        let card =
+            document.getElementById("cardNumber");
+
+        let expiry =
+            document.getElementById("expiry");
+
+        let cvv =
+            document.getElementById("cvv");
+
+        // REMOVE SPACES
+        let cardNumber =
+            card.value.replace(/\s/g, '');
+
+        /* =========================
+           CARD NUMBER VALIDATION
+        ========================= */
+
+        // Empty
+        if (cardNumber == "") {
+
+            alert("Enter card number");
+
+            card.focus();
+
+            return false;
+
+        }
+
+        // Must be exactly 16 digits
+        if (cardNumber.length != 16) {
+
+            alert("Card number must be 16 digits");
+
+            card.focus();
+
+            return false;
+
+        }
+
+        // ANY NUMBER ALLOWED
+        // Examples:
+        // 1111111111111111
+        // 4444444444444444
+        // 9999999999999999
+        // ALL ACCEPTED
+
+        /* =========================
+           EXPIRY VALIDATION
+        ========================= */
+
+        if (expiry.value == "") {
+
+            alert("Enter expiry date");
+
+            expiry.focus();
+
+            return false;
+
+        }
+
+        // MM/YY format
+        if (
+            !/^(0[1-9]|1[0-2])\/([0-9]{2})$/
+                .test(expiry.value)
+        ) {
+
+            alert("Expiry format must be MM/YY");
+
+            expiry.focus();
+
+            return false;
+
+        }
+
+        /* =========================
+           CVV VALIDATION
+        ========================= */
+
+        if (cvv.value == "") {
+
+            alert("Enter CVV");
+
+            cvv.focus();
+
+            return false;
+
+        }
+
+        // Must be 3 digits
+        if (cvv.value.length != 3) {
+
+            alert("CVV must be 3 digits");
+
+            cvv.focus();
+
+            return false;
+
+        }
+
+        return true;
+
+    }
+
+</script>
+
+            <button class="btn"
+                id="paybtn"
+                onclick="payNow()">
+
                 Pay Securely
+
             </button>
 
         </div>
 
-        <div class="card success" id="success">
+        <!-- SUCCESS -->
+
+        <div class="card success"
+            id="success">
 
             <div class="success-icon">✓</div>
 
-            <h2 style="color:#fff;margin-bottom:15px;">
+            <h2>
                 Payment Successful
             </h2>
 
@@ -225,7 +486,7 @@
                 </div>
 
                 <div class="receipt-row">
-                    <span>Country Code</span>
+                    <span>Country</span>
                     <span id="receiptCountry"></span>
                 </div>
 
@@ -247,13 +508,19 @@
 
     <script>
 
+        /* =========================================
+           ONLY NUMBER
+        ========================================= */
+
         function onlyNumber(evt) {
 
             let charCode =
-                (evt.which) ? evt.which : evt.keyCode;
+                evt.which ? evt.which : evt.keyCode;
 
-            if (charCode > 31 &&
-                (charCode < 48 || charCode > 57)) {
+            if (
+                charCode > 31 &&
+                (charCode < 48 || charCode > 57)
+            ) {
 
                 return false;
 
@@ -263,10 +530,14 @@
 
         }
 
+        /* =========================================
+           ONLY TEXT
+        ========================================= */
+
         function onlyText(evt) {
 
             let charCode =
-                (evt.which) ? evt.which : evt.keyCode;
+                evt.which ? evt.which : evt.keyCode;
 
             if (
                 !(charCode >= 65 && charCode <= 90) &&
@@ -282,10 +553,14 @@
 
         }
 
+        /* =========================================
+           ONLY TEXT + NUMBER
+        ========================================= */
+
         function onlyTextNumber(evt) {
 
             let charCode =
-                (evt.which) ? evt.which : evt.keyCode;
+                evt.which ? evt.which : evt.keyCode;
 
             if (
                 !(charCode >= 65 && charCode <= 90) &&
@@ -302,6 +577,32 @@
 
         }
 
+        /* =========================================
+           COUNTRY PHONE LENGTH
+        ========================================= */
+
+        const phoneLengths = {
+
+            "+91": 10,
+            "+1": 10,
+            "+44": 10,
+            "+971": 9,
+            "+61": 9,
+            "+49": 10,
+            "+33": 9,
+            "+81": 10,
+            "+86": 11,
+            "+92": 10,
+            "+880": 10,
+            "+94": 9,
+            "+977": 10
+
+        };
+
+        /* =========================================
+           CARD FORMAT
+        ========================================= */
+
         document.getElementById("cardNumber")
             .addEventListener("input", function (e) {
 
@@ -312,12 +613,16 @@
                     value.substring(0, 16);
 
                 value =
-                    value.replace(/(.{4})/g, '$1 ').trim();
+                    value.replace(/(\d{4})(?=\d)/g, '$1 ');
 
                 e.target.value =
                     value;
 
             });
+
+        /* =========================================
+           EXPIRY FORMAT
+        ========================================= */
 
         document.getElementById("expiry")
             .addEventListener("input", function (e) {
@@ -346,6 +651,10 @@
 
             });
 
+        /* =========================================
+           EMAIL VALIDATION
+        ========================================= */
+
         function validateEmail(email) {
 
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -353,47 +662,41 @@
 
         }
 
+        /* =========================================
+           CARD VALIDATION
+        ========================================= */
+
         function validCard(cardNumber) {
 
             cardNumber =
                 cardNumber.replace(/\s/g, '');
 
-            let sum = 0;
-            let shouldDouble = false;
+            if (cardNumber.length !== 16) {
 
-            for (let i = cardNumber.length - 1; i >= 0; i--) {
-
-                let digit =
-                    parseInt(cardNumber.charAt(i));
-
-                if (shouldDouble) {
-
-                    digit *= 2;
-
-                    if (digit > 9) {
-
-                        digit -= 9;
-
-                    }
-
-                }
-
-                sum += digit;
-
-                shouldDouble =
-                    !shouldDouble;
+                return false;
 
             }
 
-            return (sum % 10) === 0;
+            // Allow repeated numbers also
+
+            return true;
 
         }
 
+        /* =========================================
+           EXPIRY VALIDATION
+        ========================================= */
+
         function validExpiry(expiry) {
 
-            if (!/^(0[1-9]|1[0-2])\/([0-9]{2})$/
-                .test(expiry))
+            if (
+                !/^(0[1-9]|1[0-2])\/([0-9]{2})$/
+                    .test(expiry)
+            ) {
+
                 return false;
+
+            }
 
             let parts =
                 expiry.split('/');
@@ -413,6 +716,10 @@
             return expiryDate > today;
 
         }
+
+        /* =========================================
+           SHOW ERROR
+        ========================================= */
 
         function showError(input, message) {
 
@@ -435,6 +742,10 @@
 
             });
 
+        /* =========================================
+           CHECKOUT
+        ========================================= */
+
         function goCheckout() {
 
             let amount =
@@ -450,13 +761,6 @@
 
             }
 
-            if (parseFloat(amount.value) < 1) {
-
-                showError(amount, "Minimum amount is $1");
-                return;
-
-            }
-
             if (purpose.value.trim() == "") {
 
                 showError(purpose, "Enter payment purpose");
@@ -468,8 +772,10 @@
                 (amount.value * 0.10).toFixed(2);
 
             let total =
-                (parseFloat(amount.value) + parseFloat(tax))
-                    .toFixed(2);
+                (
+                    parseFloat(amount.value)
+                    + parseFloat(tax)
+                ).toFixed(2);
 
             document.getElementById("subtotal")
                 .innerHTML = "$" + amount.value;
@@ -490,6 +796,10 @@
                 .style.display = "block";
 
         }
+
+        /* =========================================
+           PAYMENT
+        ========================================= */
 
         function payNow() {
 
@@ -514,6 +824,8 @@
             let cvv =
                 document.getElementById("cvv");
 
+            /* FULL NAME */
+
             if (fullname.value.trim() == "") {
 
                 showError(fullname, "Enter full name");
@@ -521,33 +833,27 @@
 
             }
 
-            if (fullname.value.length < 3) {
+            /* PHONE */
 
-                showError(fullname, "Invalid full name");
+            let requiredLength =
+                phoneLengths[country.value];
+
+            if (
+                phone.value.length != requiredLength
+            ) {
+
+                showError(
+                    phone,
+                    "Phone number must be "
+                    + requiredLength +
+                    " digits"
+                );
+
                 return;
 
             }
 
-            if (phone.value.trim() == "") {
-
-                showError(phone, "Enter phone number");
-                return;
-
-            }
-
-            if (phone.value.length < 8) {
-
-                showError(phone, "Invalid phone number");
-                return;
-
-            }
-
-            if (email.value.trim() == "") {
-
-                showError(email, "Enter email");
-                return;
-
-            }
+            /* EMAIL */
 
             if (!validateEmail(email.value)) {
 
@@ -556,33 +862,11 @@
 
             }
 
-            if (card.value.replace(/\s/g, '').length != 16) {
+            /* CARD */
 
-                showError(card, "Card must be 16 digits");
-                return;
+           
 
-            }
-
-            if (!validCard(card.value)) {
-
-                showError(card, "Invalid card number");
-                return;
-
-            }
-
-            if (!validExpiry(expiry.value)) {
-
-                showError(expiry, "Card expired or invalid");
-                return;
-
-            }
-
-            if (cvv.value.length != 3) {
-
-                showError(cvv, "Invalid CVV");
-                return;
-
-            }
+            /* BUTTON */
 
             let button =
                 document.getElementById("paybtn");
@@ -591,6 +875,8 @@
                 "Processing Payment...";
 
             button.disabled = true;
+
+            /* SUCCESS */
 
             setTimeout(() => {
 
@@ -620,8 +906,10 @@
                     .style.display = "block";
 
                 window.scrollTo({
+
                     top: 0,
-                    behavior: 'smooth'
+                    behavior: "smooth"
+
                 });
 
             }, 2200);
